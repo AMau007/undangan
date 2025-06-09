@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Undangan Pernikahan - Rara & Dimas</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fefcf9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    .container {
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 0.2em;
+    }
+    h2 {
+      font-size: 1.5em;
+      margin: 0.5em 0 1.5em;
+      color: #a0522d;
+    }
+    .names {
+      font-size: 2em;
+      font-weight: bold;
+      margin: 1em 0;
+    }
+    .date, .location {
+      font-size: 1.2em;
+      margin: 1em 0;
+    }
+    .map-link {
+      display: inline-block;
+      margin: 1em 0;
+      padding: 10px 20px;
+      background-color: #a0522d;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+
+    /* Galeri */
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin: 2em 0;
+    }
+    .gallery img {
+      width: 200px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    /* RSVP Form */
+    form {
+      margin: 2em 0;
+      background: #fff9f4;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    input, select, textarea {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+    }
+    .button {
+      padding: 10px 20px;
+      background-color: #a0522d;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .button:hover {
+      background-color: #8b4513;
+    }
+
+    footer {
+      margin-top: 3em;
+      font-size: 0.9em;
+      color: #777;
+    }
+  </style>
+</head>
+<script>
+  async function fetchRSVP() {
+    const sheetURL = "https://docs.google.com/spreadsheets/d/1mICOmPna3DtrrfBbSVzZWLx7fQkgtWjCUgbB-_HuzHk/export?format=csv";
+    const response = await fetch(sheetURL);
+    const data = await response.text();
+
+    const rows = data.split("\n").slice(1); // skip header
+    const rsvpDiv = document.getElementById("rsvp-list");
+
+    rows.forEach(row => {
+      const [timestamp, nama, status, pesan] = row.split(",");
+      if (nama && status) {
+        const el = document.createElement("div");
+        el.style.marginBottom = "1em";
+        el.innerHTML = `<strong>${nama}</strong> (${status})<br><em>${pesan || ''}</em>`;
+        rsvpDiv.appendChild(el);
+      }
+    });
+  }
+
+  fetchRSVP();
+</script>
+
+<body>
+<h2 id="nama-tamu">Kepada Yth. Bapak/Ibu ...</h2>
+
+<!-- Musik Latar -->
+<audio autoplay loop>
+  <source src="https://soundcloud.com/pamungkas-music/to-the-bone-1?si=3e19f915af854b029d94bb1da6236251&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" type="audio/mp3">
+  Browser Anda tidak mendukung audio.
+</audio>
+
+<div class="container">
+  <h1>Undangan Pernikahan</h1>
+  <h2>Dengan penuh cinta, kami mengundang Anda</h2>
+
+  <div class="names">Aldi & Rina</div>
+
+  <div class="date">tanggal<br>jam</div>
+  <div class="location">nama tempat</div>
+
+  <a class="map-link" href="https://maps.google.com" target="_blank">Lihat Lokasi</a>
+
+  <!-- Galeri -->
+  <h2>Galeri Kenangan</h2>
+  <div class="gallery">
+    <img src="https://via.placeholder.com/200x250?text=Foto+1" alt="Foto 1" />
+    <img src="https://via.placeholder.com/200x250?text=Foto+2" alt="Foto 2" />
+    <img src="https://via.placeholder.com/200x250?text=Foto+3" alt="Foto 3" />
+    <img src="https://via.placeholder.com/200x250?text=Foto+4" alt="Foto 4" />
+  </div>
+
+  <!-- RSVP Form -->
+  <h2>Konfirmasi Kehadiran (RSVP)</h2>
+  <form action="https://script.google.com/macros/s/AKfycbxHx1F0ExoKpoYT2RE8sXOctmz77t2g_Zqrpq669zOYsVQPLSp5oJcnr5Tbq9qYVlxo/exec" method="POST" target="hidden_iframe" onsubmit="handleSubmit(); return false;" id="rsvp-form">
+    <input type="text" name="nama" placeholder="Nama Lengkap" required />
+    <select name="status" required>
+      <option value="">-- Apakah Anda akan hadir? --</option>
+      <option value="Hadir">Hadir</option>
+      <option value="Tidak Hadir">Tidak Hadir</option>
+    </select>
+    <textarea name="pesan" rows="4" placeholder="Ucapan atau pesan..."></textarea>
+    <input class="button" type="submit" value="kirim" />
+  </form>
+  <iframe name="hidden_iframe" style="display:none;"></iframe>
+
+  <footer>
+    Terima kasih atas doa dan restunya ❤<br/>
+    Aldi & Rina
+  </footer>
+</div>
+<h2>Ucapan & Kehadiran</h2>
+<div id="rsvp-list" style="text-align:left; max-width:600px; margin:auto; background:#f4f4f4; padding:20px; border-radius:10px;"></div>
+<script>
+  const sheetCSVUrl = "https://docs.google.com/spreadsheets/d/1mICOmPna3DtrrfBbSVzZWLx7fQkgtWjCUgbB-_HuzHk/export?format=csv";
+
+  async function fetchRSVP() {
+    try {
+      const response = await fetch(sheetCSVUrl);
+      const data = await response.text();
+      const rows = data.split("\n").slice(1); // Lewati header
+
+      const rsvpDiv = document.getElementById("rsvp-list");
+      rsvpDiv.innerHTML = ""; // Kosongkan isi lama
+
+      rows.forEach(row => {
+        const [timestamp, nama, status, pesan] = row.split(",");
+        if (nama && status) {
+          const el = document.createElement("div");
+          el.style.marginBottom = "1em";
+          el.innerHTML = `<strong>${nama}</strong> (${status})<br><em>${pesan || ''}</em>`;
+          rsvpDiv.appendChild(el);
+        }
+      });
+    } catch (err) {
+      console.error("Gagal memuat data RSVP:", err);
+    }
+  }
+
+  // Panggil pertama kali
+  fetchRSVP();
+
+  // Perbarui setiap 10 detik (10000 ms)
+  setInterval(fetchRSVP, 1000);
+</script>
+<script>
+  function handleSubmit() {
+    const form = document.getElementById("rsvp-form");
+
+    // Simpan input ke variabel (opsional)
+    const nama = form.nama.value;
+    const status = form.status.value;
+    const pesan = form.pesan.value;
+
+    // Kirim data via hidden iframe (biar tetap kirim ke Google)
+    form.submit();
+
+    // Bersihkan field
+    form.reset();
+
+    // Tambahkan pesan konfirmasi (opsional)
+    alert("Terima kasih, konfirmasi Anda telah dikirim!");
+
+    // Bisa juga sembunyikan form jika sudah submit:
+    // form.style.display = "none";
+  }
+</script>
+<script>
+  // Ambil parameter dari URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const namaTamu = urlParams.get("to");
+
+  // Ubah teks di elemen tertentu, misal dengan ID 'nama-tamu'
+  if (namaTamu) {
+    const target = document.getElementById("nama-tamu");
+    if (target) {
+      target.innerText = `Kepada Yth. Bapak/Ibu ${decodeURIComponent(namaTamu)}`;
+    }
+  }
+</script>
+
+
+
+</body>
+</html>
