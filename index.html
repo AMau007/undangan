@@ -96,28 +96,6 @@
     }
   </style>
 </head>
-<script>
-  async function fetchRSVP() {
-    const sheetURL = "https://docs.google.com/spreadsheets/d/1mICOmPna3DtrrfBbSVzZWLx7fQkgtWjCUgbB-_HuzHk/export?format=csv";
-    const response = await fetch(sheetURL);
-    const data = await response.text();
-
-    const rows = data.split("\n").slice(1); // skip header
-    const rsvpDiv = document.getElementById("rsvp-list");
-
-    rows.forEach(row => {
-      const [timestamp, nama, status, pesan] = row.split(",");
-      if (nama && status) {
-        const el = document.createElement("div");
-        el.style.marginBottom = "1em";
-        el.innerHTML = `<strong>${nama}</strong> (${status})<br><em>${pesan || ''}</em>`;
-        rsvpDiv.appendChild(el);
-      }
-    });
-  }
-
-  fetchRSVP();
-</script>
 
 <body>
 <h2 id="nama-tamu">Kepada Yth. Bapak/Ibu ...</h2>
@@ -222,6 +200,28 @@
     // Bisa juga sembunyikan form jika sudah submit:
     // form.style.display = "none";
   }
+</script>
+  <script>
+  async function fetchRSVP() {
+    const sheetURL = "https://docs.google.com/spreadsheets/d/1mICOmPna3DtrrfBbSVzZWLx7fQkgtWjCUgbB-_HuzHk/export?format=csv";
+    const response = await fetch(sheetURL);
+    const data = await response.text();
+
+    const rows = data.split("\n").slice(1); // skip header
+    const rsvpDiv = document.getElementById("rsvp-list");
+
+    rows.forEach(row => {
+      const [timestamp, nama, status, pesan] = row.split(",");
+      if (nama && status) {
+        const el = document.createElement("div");
+        el.style.marginBottom = "1em";
+        el.innerHTML = `<strong>${nama}</strong> (${status})<br><em>${pesan || ''}</em>`;
+        rsvpDiv.appendChild(el);
+      }
+    });
+  }
+
+  fetchRSVP();
 </script>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
