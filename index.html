@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <link href="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/css/lightbox.min.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Undangan Pernikahan - Aldi & Rina</title>
   <style>
@@ -18,7 +21,7 @@
   position: fixed;
   z-index: 9999;
   background: url('image/2500 (38).jpg') center/cover no-repeat;
-  top: 0; left: 0; width: 100%; height: 100%;
+  top: 0; left: 0; width: 100%; height: 99%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -131,13 +134,13 @@
     .slideshow-container {
   position: relative;
   max-width: 100%;
-  height: 500px;
+  height: 700px;
   overflow: hidden;
 }
 .slide-image {
   display: block;
   width: 100%;
-  height: 500px;
+  height: 100%;
   object-fit: cover;
   position: absolute;
   opacity: 0;
@@ -146,7 +149,55 @@
 .slide-image.active {
   opacity: 1;
 }
+.slide-caption {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 1.2em;
+}
+#countdown-wrapper {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #fff9f4;
+}
+
+#countdown-wrapper h2 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  color: #a0522d;
+}
+
+#countdown {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+#countdown div {
+  background-color: #a0522d;
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  min-width: 80px;
+  font-size: 1.2em;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+#countdown span {
+  font-size: 2em;
+  font-weight: bold;
+  display: block;
+}
+
   </style>
+
+
 </head>
 
 <body>
@@ -170,15 +221,29 @@
     <div class="slideshow-container">
      <img class="slide-image" src="https://4mau15.github.io/undangan/image/71wYVk0NCTL.jpg" />
      <img class="slide-image" src="https://4mau15.github.io/undangan/image/foto1.jpeg" />
-     <img class="slide-image" src="https://4mau15.github.io/undangan/image/715317.jpg" />
+     <img class="slide-image" src="https://4mau15.github.io/undangan/image/71wYVk0NCTL.jpg" />
+     <div class="slide-caption"> The wedding of Aldi & Rina </div>
     </div>
 
-    <h1>Undangan Pernikahan</h1>
-    <h2>Dengan penuh cinta, kami mengundang Anda</h2>
+    <div class="salam">
+    <h2>Assalamu'alaikum Warahmatullaahi Wabarakaatuh</h2>
+    <p>Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan. Ya Allah semoga ridho-Mu tercurah mengiringi pernikahan kami.</p>
 
     <div class="names">Aldi & Rina</div>
-
+    </div>
     <div class="date">tanggal<br>jam</div>
+    <div id="countdown-wrapper">
+  <h2>Menuju Hari Bahagia</h2>
+  <div id="countdown">
+    <div><span id="days">00</span><br>Hari</div>
+    <div><span id="hours">00</span><br>Jam</div>
+    <div><span id="minutes">00</span><br>Menit</div>
+    <div><span id="seconds">00</span><br>Detik</div>
+  </div>
+</div>
+
+
+
     <div class="location">lokasi</div>
 
     <a class="map-link" href="https://maps.google.com" target="_blank">Lihat Lokasi</a>
@@ -303,6 +368,30 @@
   document.querySelector("audio")?.play();
 }
 
+</script>
+<script>
+  const countdownDate = new Date("Jul 12, 2026 10:00:00").getTime();
+
+  const countdownFunc = setInterval(() => {
+    const now = new Date().getTime();
+    const distance = countdownDate - now;
+
+    if (distance < 0) {
+      clearInterval(countdownFunc);
+      document.getElementById("countdown").innerHTML = "<strong>Acara telah dimulai!</strong>";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("days").innerText = days.toString().padStart(2, "0");
+    document.getElementById("hours").innerText = hours.toString().padStart(2, "0");
+    document.getElementById("minutes").innerText = minutes.toString().padStart(2, "0");
+    document.getElementById("seconds").innerText = seconds.toString().padStart(2, "0");
+  }, 1000);
 </script>
 
 </body>
