@@ -119,8 +119,8 @@
     <!-- Galeri -->
     <h2>Galeri Kenangan</h2>
     <div class="gallery">
-  <a href="image/71wYVk0NCTL.jpg" data-lightbox="galeri"><img src="image/71wYVk0NCTL.jpg" alt="Foto 1" /></a>
-  <a href="image/foto1.jpeg" data-lightbox="galeri"><img src="image/foto1.jpeg" alt="Foto 2" /></a>
+  <img src="image/71wYVk0NCTL.jpg" alt="Foto 1" />
+  <img src="image/foto1.jpeg" alt="Foto 2" />
   <img src="https://photos.app.goo.gl/fJbcVZ3AnkQYknZ1A" alt="Foto 3" />
   <img src="https://photos.app.goo.gl/fJbcVZ3AnkQYknZ1A" alt="Foto 4" />
 </div>
@@ -204,6 +204,10 @@
     fetchRSVP();
     setInterval(fetchRSVP, 10000); // update tiap 10 detik
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/js/lightbox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script>
+  mediumZoom('.gallery img'); // selector gambar yang ingin diberi efek zoom
+</script>
+
 </body>
 </html>
