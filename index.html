@@ -229,14 +229,13 @@
     const namaTamu = params.get("to");
 
     if (namaTamu) {
-      document.getElementById("nama-tamu").innerText =
-        "Kepada Yth. Bapak/Ibu " + decodeURIComponent(namaTamu);
+      const target = document.getElementById("nama-tamu");
+      if (target) {
+        target.innerText = `Kepada Yth. Bapak/Ibu ${decodeURIComponent(namaTamu)}`;
+      }
     }
   });
 </script>
-
-
-
 
 </body>
 </html>
