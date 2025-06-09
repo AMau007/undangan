@@ -151,16 +151,18 @@
   <!-- Script -->
   <script>
     // Ambil nama tamu dari URL
-    document.addEventListener("DOMContentLoaded", function () {
-      const params = new URLSearchParams(window.location.search);
-      const namaTamu = params.get("to");
+   document.addEventListener("DOMContentLoaded", function () {
+  const params = new URLSearchParams(window.location.search);
+  const namaTamu = params.get("to");
 
-      if (namaTamu) {
-        const target = document.getElementById("nama-tamu");
-        const capitalized = namaTamu.charAt(0).toUpperCase() + namaTamu.slice(1);
-        target.innerText = `Kepada Yth. Bapak/Ibu ${decodeURIComponent(capitalized)}`;
-      }
-    });
+  if (namaTamu) {
+    const target = document.getElementById("nama-tamu");
+    const decoded = decodeURIComponent(namaTamu);
+    const capitalized = decoded.charAt(0).toUpperCase() + decoded.slice(1);
+    target.innerText = `Kepada Yth. Bapak/Ibu ${capitalized}`;
+  }
+});
+
 
     // Form RSVP
     function handleSubmit() {
