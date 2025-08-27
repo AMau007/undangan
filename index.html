@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <link href="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/css/lightbox.min.css" rel="stylesheet" />
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Undangan Pernikahan - Aldi & Rina</title>
   <style>
@@ -18,43 +19,39 @@
       text-align: center;
     }
     #cover {
-  position: fixed;
-  z-index: 9999;
-  background: url('image/2500 (38).jpg') center/cover no-repeat;
-  top: 0; left: 0; width: 100%; height: 99%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  opacity: 1;
-  transition: opacity 1s ease;
-}
-
-#cover.fade-out {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.cover-content {
-  background: rgba(255, 255, 255, 0.8);
-  padding: 30px;
-  border-radius: 10px;
-}
-
-#cover button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #a0522d;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 1.1em;
-  cursor: pointer;
-}
-
+      position: fixed;
+      z-index: 9999;
+      background: url('image/2500 (38).jpg') center/cover no-repeat;
+      top: 0; left: 0; width: 100%; height: 99%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      opacity: 1;
+      transition: opacity 1s ease;
+    } 
+    #cover.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .cover-content {
+      background: rgba(255, 255, 255, 0.8);
+      padding: 30px;
+      border-radius: 10px;
+    }
+    #cover button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #a0522d;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.1em;
+      cursor: pointer;
+    }
     .container {
       padding: 40px 20px;
-      max-width: 800px;
+      max-width: 700px;
       margin: auto;
     }
     h1 {
@@ -66,10 +63,44 @@
       margin: 0.5em 0 1.5em;
       color: #a0522d;
     }
-    .names {
-      font-size: 2em;
-      font-weight: bold;
-      margin: 1em 0;
+    .mempelai {
+      margin: 2em 0;
+    }
+    .foto-mempelai-cewe{
+      height: 300px;
+      width: 250px;
+      border-radius: 30%;
+      border: solid;
+      border-color: #a0522d;
+    }
+    .social-link{
+      display: inline-block;
+      background-color: #a0522d;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+    }
+    .space{
+      font-size: 1cm;
+    }
+    .akad{
+      height: 250px;
+      max-width: 300px;
+      margin: auto;
+      border: solid;
+      border-color:#a0522d;
+      border-radius: 8px;
+      padding: 20px 20px;
+    }
+    .resepsi{
+      height: 250px;
+      max-width: 300px;
+      margin: auto;
+      border: solid;
+      border-color:#a0522d;
+      border-radius: 8px;
+      padding: 20px 20px;
     }
     .date, .location {
       font-size: 1.2em;
@@ -84,7 +115,6 @@
       text-decoration: none;
       border-radius: 8px;
     }
-
     .gallery {
       display: flex;
       flex-wrap: wrap;
@@ -98,7 +128,6 @@
       border-radius: 10px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
-
     form {
       margin: 2em 0;
       background: #fff9f4;
@@ -125,91 +154,100 @@
     .button:hover {
       background-color: #8b4513;
     }
-
     footer {
       margin-top: 3em;
       font-size: 0.9em;
       color: #777;
     }
     .slideshow-container {
-  position: relative;
-  max-width: 100%;
-  height: 700px;
-  overflow: hidden;
-}
-.slide-image {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-.slide-image.active {
-  opacity: 1;
-}
-.slide-caption {
-  position: absolute;
-  bottom: 100px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0,0,0,0.5);
-  color: white;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 1.2em;
-}
-#countdown-wrapper {
-  text-align: center;
-  padding: 40px 20px;
-  background-color: #fff9f4;
-}
-
-#countdown-wrapper h2 {
-  font-size: 1.8em;
-  margin-bottom: 20px;
-  color: #a0522d;
-}
-
-#countdown {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-#countdown div {
-  background-color: #a0522d;
-  color: white;
-  padding: 20px;
-  border-radius: 12px;
-  min-width: 80px;
-  font-size: 1.2em;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-#countdown span {
-  font-size: 2em;
-  font-weight: bold;
-  display: block;
-}
-
+      position: relative;
+      max-width: 100%;
+      height: 700px;
+      overflow: hidden;
+    }
+    .slide-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .slide-image.active {
+      opacity: 1;
+    }
+    .slide-caption {
+      position: absolute;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.5);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 1.2em;
+    }
+    #countdown-wrapper {
+      text-align: center;
+      padding: 40px 20px;
+      background-color: #fff9f4;
+    }
+    #countdown-wrapper h2 {
+      font-size: 1.8em;
+      margin-bottom: 20px;
+      color: #a0522d;
+    }
+    #countdown {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    #countdown div {
+      background-color: #a0522d;
+      color: white;
+      padding: 20px;
+      border-radius: 12px;
+      min-width: 80px;
+      font-size: 1.2em;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    #countdown span {
+      font-size: 2em;
+      font-weight: bold;
+      display: block;
+    }
+    .section {
+      margin: 0 auto;
+      max-width: 800px;
+      border-radius: 16px;
+      background-color: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .salam-pembuka {
+      background-color: #fff8f0;
+    }
+    .galleri {
+      background-color: #f0f8ff;
+    }
+    .time{
+      background-color: #fff8f0;
+    }
+    .rsvp {
+      background-color: #fff0f5;
+    }
   </style>
-
-
 </head>
-
 <body>
- <div id="cover" class="cover-show">
-  <div class="cover-content">
-    <h2 id="nama-tamu">Kepada Yth. Bapak/Ibu ...</h2>
-    <h1>Undangan Pernikahan</h1>
-    <p>Aldi & Rina</p>
-    <button onclick="openInvitation()">Buka Undangan</button>
+<div id="cover" class="cover-show">
+    <div class="cover-content">
+      <h2 id="nama-tamu">Kepada Yth. Bapak/Ibu ...</h2>
+      <h1>Undangan Pernikahan</h1>
+      <p>Aldi & Rina</p>
+      <button onclick="openInvitation()">Buka Undangan</button>
+    </div>
   </div>
-</div>
-
 
   <!-- Musik latar -->
   <audio autoplay loop>
@@ -218,45 +256,89 @@
   </audio>
 
   <div class="container">
-    <div class="slideshow-container">
-     <img class="slide-image" src="https://4mau15.github.io/undangan/image/71wYVk0NCTL.jpg" />
-     <img class="slide-image" src="https://4mau15.github.io/undangan/image/foto1.jpeg" />
-     <img class="slide-image" src="https://4mau15.github.io/undangan/image/71wYVk0NCTL.jpg" />
-     <div class="slide-caption"> The wedding of Aldi & Rina </div>
-    </div>
+    <section class="slide">
+      <div class="slideshow-container">
+        <img class="slide-image" src="https://4mau15.github.io/undangan/image/71wYVk0NCTL.jpg" />
+        <img class="slide-image" src="https://4mau15.github.io/undangan/image/foto1.jpeg" />
+        <img class="slide-image" src="https://4mau15.github.io/undangan/image/71wYVk0NCTL.jpg" />
+        <div class="slide-caption"> The wedding of Aldi & Rina </div>
+      </div>
+    </section>
+    <section class="salam-pembuka" data-aos="fade-up">
+      <div class="salam">
+        <h2>Assalamu'alaikum Warahmatullaahi Wabarakaatuh</h2>
+          <p>Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan. Ya Allah semoga ridho-Mu tercurah mengiringi pernikahan kami.</p>
 
-    <div class="salam">
-    <h2>Assalamu'alaikum Warahmatullaahi Wabarakaatuh</h2>
-    <p>Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan. Ya Allah semoga ridho-Mu tercurah mengiringi pernikahan kami.</p>
-
-    <div class="names">Aldi & Rina</div>
-    </div>
-    <div class="date">tanggal<br>jam</div>
-    <div id="countdown-wrapper">
-  <h2>Menuju Hari Bahagia</h2>
-  <div id="countdown">
-    <div><span id="days">00</span><br>Hari</div>
-    <div><span id="hours">00</span><br>Jam</div>
-    <div><span id="minutes">00</span><br>Menit</div>
-    <div><span id="seconds">00</span><br>Detik</div>
-  </div>
-</div>
-
-
-
-    <div class="location">lokasi</div>
-
-    <a class="map-link" href="https://maps.google.com" target="_blank">Lihat Lokasi</a>
-
+            <div class="mempelai">
+              <img class="foto-mempelai-cewe" src="https://4mau15.github.io/undangan/image/71wYVk0NCTL.jpg" /> <br>
+              Rina Ratih <br>
+              Putri ketiga dari <br>
+              Bapak Idim & Ibu Esih <br>
+              <a class="social-link" href="https://www.instagram.com/rinarth_12/"> Instagram </a>
+              <p>
+               <div class="space"> ------ & ------ </div>
+              <p>
+               <img class="foto-mempelai-cewe" src="https://4mau15.github.io/undangan/image/71wYVk0NCTL.jpg" /> <br>
+              Aldi Maulana <br>
+              Putra kedua dari <br>
+              Bapak Ece Syamsudim & Ibu Aisyah <br>
+              <a class="social-link" href="https://www.instagram.com/rinarth_12/"> Instagram </a>
+            </div>
+      </div>
+    </section>
+    <section class="time">
+      <p>
+      <div class="akad">
+        AKAD NIKAH 
+        <p>
+          Sabtu, 15 Juli 2026 <br>
+          09:00 WIB s/d 10:00 WIB
+        </p>
+        <p>
+          Kediaman Mempelai Wanita <br>
+          Kp.karadenan kulon rt25 rw 14 cimahi cicantayan, 43155 Kabupaten Sukabumi
+        </p>
+        <p><a class="map-link" href="https://maps.google.com" target="_blank">Lihat Lokasi</a></p>
+      </div>
+      <p>
+      <p>
+      <div class="resepsi">
+        RSEPSI 
+        <p>
+          Sabtu, 15 Juli 2026 <br>
+          10:00 WIB s/d selesai
+        </p>
+        <p>
+          Kediaman Mempelai Wanita <br>
+          Kp.karadenan kulon rt25 rw 14 cimahi cicantayan, 43155 Kabupaten Sukabumi
+        </p>
+        <p><a class="map-link" href="https://maps.google.com" target="_blank">Lihat Lokasi</a></p>
+      </div>
+      </p>
+      </p>
+      <div id="countdown-wrapper">
+        <h2>Menuju Hari Bahagia</h2>
+        <div id="countdown">
+          <div><span id="days">00</span><br>Hari</div>
+          <div><span id="hours">00</span><br>Jam</div>
+          <div><span id="minutes">00</span><br>Menit</div>
+          <div><span id="seconds">00</span><br>Detik</div>
+        </div>
+      </div>
+    </p>
+    </section>
+    
+    <section class="galleri" data-aos="fade-up">
     <!-- Galeri -->
     <h2>Galeri Kenangan</h2>
-    <div class="gallery">
-  <img src="https://4mau15.github.io/undangan/image/71wYVk0NCTL.jpg" alt="Foto 1" />
-  <img src="https://4mau15.github.io/undangan/image/foto1.jpeg" alt="Foto 2" />
-  <img src="https://4mau15.github.io/undangan/image/71wYVk0NCTL.jpg" alt="Foto 3" />
-  <img src="https://4mau15.github.io/undangan/image/foto1.jpeg" alt="Foto 4" />
-</div>
-
+    <p><div class="gallery">
+      <img src="https://4mau15.github.io/undangan/image/71wYVk0NCTL.jpg" alt="Foto 1" />
+      <img src="https://4mau15.github.io/undangan/image/foto1.jpeg" alt="Foto 2" />
+      <img src="https://4mau15.github.io/undangan/image/71wYVk0NCTL.jpg" alt="Foto 3" />
+      <img src="https://4mau15.github.io/undangan/image/foto1.jpeg" alt="Foto 4" />
+    </div>
+    </section>
+    <section class="rsvp" data-aos="fade-up" ata-aos-duration="1000" data-aos-delay="200">
 
     <!-- RSVP -->
     <h2>Konfirmasi Kehadiran</h2>
@@ -271,7 +353,7 @@
       <input class="button" type="submit" value="Kirim" />
     </form>
     <iframe name="hidden_iframe" style="display:none;"></iframe>
-
+    </section>
     <footer>
       Terima kasih atas doa dan restunya ❤<br/>
       Aldi & Rina
@@ -296,7 +378,6 @@
     target.innerText = `Kepada Yth. Bapak/Ibu ${capitalized}`;
   }
 });
-
 
     // Form RSVP
     function handleSubmit() {
@@ -392,6 +473,10 @@
     document.getElementById("minutes").innerText = minutes.toString().padStart(2, "0");
     document.getElementById("seconds").innerText = seconds.toString().padStart(2, "0");
   }, 1000);
+</script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
 </script>
 
 </body>
