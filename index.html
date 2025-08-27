@@ -237,10 +237,34 @@
     .rsvp {
       background-color: #fff0f5;
     }
+    #music-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: #ff4081;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+
+  #music-btn:hover {
+    background: #e73370;
+    transform: scale(1.1);
+  }
   </style>
 </head>
 <body>
-<div id="cover" class="cover-show">
+<!--<div id="cover" class="cover-show">
     <div class="cover-content">
       <h2 id="nama-tamu">Kepada Yth. Bapak/Ibu ...</h2>
       <h1>Undangan Pernikahan</h1>
@@ -248,12 +272,15 @@
       <button onclick="openInvitation()">Buka Undangan</button>
     </div>
   </div>
-
+-->
   <!-- Musik latar -->
-  <audio autoplay loop>
+  <audio id="bg-music" autoplay loop>
     <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg" />
     Browser Anda tidak mendukung audio.
   </audio>
+<button id="music-btn">
+  ⏸
+</button>
 
   <div class="container">
     <section class="slide">
@@ -478,6 +505,19 @@
 <script>
   AOS.init();
 </script>
+<script>
+  const music = document.getElementById("bg-music");
+  const btn = document.getElementById("music-btn");
 
+  btn.addEventListener("click", () => {
+    if (music.paused) {
+      music.play();
+      btn.textContent = "⏸"; // ikon pause
+    } else {
+      music.pause();
+      btn.textContent = "▶"; // ikon play
+    }
+  });
+</script>
 </body>
 </html>
