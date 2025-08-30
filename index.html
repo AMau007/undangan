@@ -120,18 +120,29 @@
       text-decoration: none;
       border-radius: 8px;
     }
+    .gallery-scroll{
+      width: 100%;
+     overflow-x: auto;      /* bikin scroll ke samping */
+     overflow-y: hidden;    /* biar ga ada scroll vertikal */
+     white-space: nowrap;   /* cegah turun ke bawah */
+     padding: 10px;
+     box-sizing: border-box;
+    }
     .gallery {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
       gap: 10px;
-      margin: 2em 0;
     }
     .gallery img {
-      width: 200px;
+      width: 250px;
       height: auto;
       border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      flex-shrink: 0;        /* biar ukuran gambar tidak mengecil */
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);  /* efek zoom saat hover */
     }
     form {
       margin: 2em 0;
@@ -236,6 +247,7 @@
     .galleri {
       background-color: #f0f8ff;
     }
+
     .dalil{
       background-color:#fff8f0;
     }
@@ -276,7 +288,7 @@
   </style>
 </head>
 <body>
-
+  
 <div id="cover" class="cover-show">
     <div class="cover-content">
       <h2 id="nama-tamu">Kepada Yth. Bapak/Ibu ...</h2>
@@ -380,11 +392,14 @@
     <section class="galleri" data-aos="fade-up">
     <!-- Galeri -->
     <h2>Galeri Kenangan</h2>
-    <p><div class="gallery">
+    <p>
+    <div class="gallery-scroll">
+    <div class="gallery">
       <img src="https://4mau15.github.io/undangan/image/2500 (38).jpg" alt="Foto 1" />
       <img src="https://4mau15.github.io/undangan/image/2500 (50).jpg" alt="Foto 2" />
       <img src="https://4mau15.github.io/undangan/image/2500 (38).jpg" alt="Foto 3" />
       <img src="https://4mau15.github.io/undangan/image/2500 (50).jpg" alt="Foto 4" />
+    </div>
     </div>
     </section>
     <section class="rsvp" data-aos="fade-up" ata-aos-duration="1000" data-aos-delay="200">
