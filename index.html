@@ -234,28 +234,32 @@
       font-weight: bold;
       display: block;
     }
-    .section {
-      margin: 0 auto;
-      max-width: 800px;
-      border-radius: 16px;
-      background-color: #fff;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
+    @media (max-width: 768px) {
+  section {
+    padding: 60px 15px;
+  }
+}
+
+    
     .salam-pembuka {
       background: url(https://ARinn15.github.io/undangan/image/bg3.jpg) center/cover no-repeat;
     }
     .galleri {
       background-color: #f0f8ff;
+      padding: 20px 20px;
     }
 
     .dalil{
       background-color:#fff8f0;
+      padding: 50px 50px;
     }
     .time{
-      background: url(https://ARinn15.github.io/undangan/image/bg1.jpg);
+      background: url(https://ARinn15.github.io/undangan/image/bg1.jpg) center/cover no-repeat;
+      padding: 50px 50px;
     }
     .rsvp {
       background-color: #fff0f5;
+      padding: 72px 70px;
     }
     .nama-pengantin{
       font-family: 'Great Vibes';
@@ -285,10 +289,98 @@
     background: #e73370;
     transform: scale(1.1);
   }
+   .gift {
+    padding: 72px 20px;
+    background: #fff8f2; /* bisa disesuaikan */
+  }
+  .gift-container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .gift-title {
+    font-size: 2rem;
+    margin: 0 0 8px;
+    color: #a0522d;
+  }
+  .gift-subtitle {
+    margin: 0 auto 28px;
+    max-width: 700px;
+    color: #5c4638;
+    line-height: 1.6;
+  }
+
+  .gift-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 900px) {
+    .gift-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .gift-grid { grid-template-columns: 1fr; }
+  }
+
+  .gift-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .gift-card .gift-bank {
+    font-weight: 700;
+    letter-spacing: .5px;
+    color: #8b4513;
+  }
+  .gift-card .gift-name {
+    color: #6b5343;
+  }
+  .gift-card .gift-number {
+    font-size: 1.15rem;
+    font-weight: 700;
+    padding: 8px 12px;
+    background: #fff3e9;
+    border-radius: 10px;
+    user-select: all;
+  }
+  .gift-copy, .gift-download {
+    margin-top: 6px;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 999px;
+    background: #a0522d;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: .95rem;
+    transition: transform .08s ease, opacity .2s ease, background .2s ease;
+  }
+  .gift-copy:hover,
+  .gift-download:hover { background: #8b4513; }
+  .gift-copy:active,
+  .gift-download:active { transform: scale(0.98); }
+  .gift-note {
+    color: #8b8b8b;
+  }
+
+  .qris-card .gift-qris {
+    width: 180px;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid #eee;
+  }
   </style>
 </head>
 <body>
-  
+<button id="music-btn">
+  ⏸
+</button>
+<!--
 <div id="cover" class="cover-show">
     <div class="cover-content">
       <h2 id="nama-tamu">Kepada Yth. Bapak/Ibu ...</h2>
@@ -297,15 +389,13 @@
       <button onclick="openInvitation()">Buka Undangan</button>
     </div>
   </div>
-
+-->
   <!-- Musik latar -->
   <audio id="bg-music" autoplay loop>
     <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg" />
     Browser Anda tidak mendukung audio.
   </audio>
-<button id="music-btn">
-  ⏸
-</button>
+
 
   <div class="container">
     <section class="slide">
@@ -341,7 +431,7 @@
       </div>
     </section>
     <section class="dalil">
-    <div data-aos="zoom-in" data-aos-duration="3000">
+    <div data-aos="zoom-in" data-aos-duration="3000" class="arrum">
       "Dan Di Antara Tanda-Tanda (Kebesaran)-Nya Ialah Dia Menciptakan Pasangan-Pasangan Untukmu Dari Jenismu Sendiri, Agar Kamu Cenderung Dan Merasa Tenteram Kepadanya, Dan Dia Menjadikan Di Antaramu Rasa Kasih Dan Sayang. Sesungguhnya Pada Yang Demikian Itu Benar-Benar Terdapat Tanda-Tanda (Kebesaran Allah) Bagi Kaum Yang Berpikir."
       <br>
       - Ar-Rum 21 -
@@ -364,7 +454,7 @@
       <p>
       <p>
       <div class="resepsi" data-aos="zoom-in" data-aos-duration="3000">
-        RSEPSI 
+        RESEPSI 
         <p data-aos="zoom-in" data-aos-duration="3000">
           Sabtu, 15 Juli 2026 <br>
            Pukul 10:00 WIB s/d selesai
@@ -395,17 +485,54 @@
     <p>
     <div class="gallery-scroll">
     <div class="gallery">
-      <img src="https://ARinn15.github.io/undangan/image/2500 (38).jpg" alt="Foto 1" />
-      <img src="https://ARinn15.github.io/undangan/image/2500 (50).jpg" alt="Foto 2" />
-      <img src="https://ARinn15.github.io/undangan/image/2500 (38).jpg" alt="Foto 3" />
-      <img src="https://ARinn15.github.io/undangan/image/2500 (50).jpg" alt="Foto 4" />
+      <img data-aos="fade-up" data-aos-duration="4000" src="https://ARinn15.github.io/undangan/image/2500 (38).jpg" alt="Foto 1" />
+      <img data-aos="fade-up" data-aos-duration="4000" src="https://ARinn15.github.io/undangan/image/2500 (50).jpg" alt="Foto 2" />
+      <img data-aos="fade-up" data-aos-duration="4000" src="https://ARinn15.github.io/undangan/image/2500 (38).jpg" alt="Foto 3" />
+      <img data-aos="fade-up" data-aos-duration="4000" src="https://ARinn15.github.io/undangan/image/2500 (50).jpg" alt="Foto 4" />
     </div>
     </div>
     </section>
-    <section class="rsvp" data-aos="fade-up" ata-aos-duration="1000" data-aos-delay="200">
+    <section class="gift">
+      <div class="gift-container">
+      <h2 class="gift-title">Wedding Gift</h2>
+      <p class="gift-subtitle">
+        Kehadiran dan doa restu Anda merupakan hadiah terindah bagi kami.
+        Namun apabila berkenan memberikan tanda kasih, dapat melalui:
+      </p>
 
+        <div class="gift-grid">
+          <!-- KARTU REKENING 1 -->
+          <div class="gift-card">
+          <div class="gift-bank">BCA</div>
+          <div class="gift-name">a.n. Aldi Maulana</div>
+          <div class="gift-number" id="rek-bca">1234 5678 90</div>
+          <button class="gift-copy" data-target="rek-bca">Salin Nomor</button>
+          <small class="gift-note">Mohon sertakan nama pengirim pada catatan.</small>
+          </div>
+
+          <!-- KARTU REKENING 2 -->
+        <div class="gift-card">
+          <div class="gift-bank">MANDIRI</div>
+          <div class="gift-name">a.n. Rina Ratih</div>
+          <div class="gift-number" id="rek-bni">9876 5432 10</div>
+          <button class="gift-copy" data-target="rek-bni">Salin Nomor</button>
+          <small class="gift-note">Terima kasih atas tanda kasihnya.</small>
+        </div>
+
+          <!-- KARTU QRIS -->
+        <!--<div class="gift-card qris-card">
+          <div class="gift-bank">QRIS</div>
+          <img src="image/qris.png" alt="QRIS" class="gift-qris" />
+          <a class="gift-download" href="image/qris.png" download>Unduh QR</a>
+          <small class="gift-note">Silakan scan QR untuk mengirim hadiah.</small>
+        </div> -->
+        </div>
+      </div>
+      
+    </section>
+    <section class="rsvp" data-aos="fade-up" ata-aos-duration="1000" data-aos-delay="200">
     <!-- RSVP -->
-    <h2 data-aos="zoom-in" data-aos-duration="3000">Konfirmasi Kehadiran</h2>
+    <h2 data-aos="zoom-in" data-aos-duration="3000" class="teks">Konfirmasi Kehadiran</h2>
     <form action="https://script.google.com/macros/s/AKfycbxHx1F0ExoKpoYT2RE8sXOctmz77t2g_Zqrpq669zOYsVQPLSp5oJcnr5Tbq9qYVlxo/exec" method="POST" target="hidden_iframe" onsubmit="handleSubmit(); return false;" id="rsvp-form">
       <input type="text" name="nama" placeholder="Nama Lengkap" required  data-aos="zoom-in" data-aos-duration="3000"/>
       <select name="status" required data-aos="zoom-in" data-aos-duration="3000">
@@ -439,7 +566,7 @@
     const target = document.getElementById("nama-tamu");
     const decoded = decodeURIComponent(namaTamu);
     const capitalized = decoded.charAt(0).toUpperCase() + decoded.slice(1);
-    target.innerText = `Kepada Yth. Bapak/Ibu ${capitalized}`;
+    target.innerText = `Kepada Yth. Bapak/Ibu  ${capitalized}`;
   }
 });
 
@@ -556,10 +683,34 @@
     }
   });
 </script>
+<script>
+  // Tombol salin nomor rekening
+  document.querySelectorAll('.gift-copy').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const id = btn.getAttribute('data-target');
+      const text = document.getElementById(id).innerText.replace(/\s+/g, '');
+      try {
+        await navigator.clipboard.writeText(text);
+        const old = btn.textContent;
+        btn.textContent = 'Disalin ✓';
+        setTimeout(() => (btn.textContent = old), 1200);
+      } catch (e) {
+        // fallback kalau clipboard tidak tersedia
+        const area = document.createElement('textarea');
+        area.value = text;
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        document.body.removeChild(area);
+        const old = btn.textContent;
+        btn.textContent = 'Disalin ✓';
+        setTimeout(() => (btn.textContent = old), 1200);
+      }
+    });
+  });
+</script>
 </body>
 </html>
-
-
 
 
 
