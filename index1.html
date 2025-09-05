@@ -20,6 +20,7 @@
       margin: 0;
       padding: 0;
       text-align: center;
+      overflow: hidden;
     }
     #cover {
       position: fixed;
@@ -287,7 +288,7 @@
     align-items: center;
     justify-content: center;
     transition: background 0.3s ease, transform 0.2s ease;
-    z-index : 1000;
+    z-index: 1000;
   }
 
   #music-btn:hover {
@@ -397,7 +398,7 @@
 .bottom-nav a {
   text-decoration: none;
   font-size: 22px;
-  color: #FFF;
+  color: #fff;
   transition: all 0.3s ease;
 }
 
@@ -418,13 +419,13 @@
       <h2 id="nama-tamu">Kepada Yth. Bapak/Ibu ...</h2>
       <h1>Undangan Pernikahan</h1>
       <p class="nama-pengantin">Aldi & Rina</p>
-      <button onclick="openInvitation()">Buka Undangan</button>
+      <button onclick="openInvitation()" id="btn-buka" class="btn-buka">Buka Undangan</button>
     </div>
   </div>
 
   <!-- Musik latar -->
   <audio id="bg-music" autoplay loop>
-    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg" />
+    <source src="musik/aku-memilihmu.mp3" type="audio/mpeg" />
     Browser Anda tidak mendukung audio.
   </audio>
 
@@ -751,13 +752,18 @@
     });
   });
 </script>
+<script>
+  document.getElementById("btn-buka").addEventListener("click", function() {
+  // sembunyikan cover
+  document.querySelector(".cover-show").style.display = "none";
+
+  // aktifkan scroll
+  document.body.style.overflow = "auto";
+});
+
+</script>
 </body>
 </html>
-
-
-
-
-
 
 
 
